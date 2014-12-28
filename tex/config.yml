@@ -1,0 +1,7 @@
+# dotmgr config
+install:
+  link:
+    - src: .chktexrc
+      dst: ~/.chktexrc
+    - src: .latexmkrc
+      dst: ~/.latexmkrc

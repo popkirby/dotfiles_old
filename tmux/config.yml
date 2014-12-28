@@ -1,0 +1,5 @@
+# dotmgr config
+install:
+  link:
+    - src: .tmux.conf
+      dst: ~/.tmux.conf

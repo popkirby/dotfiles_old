@@ -1,0 +1,45 @@
+# prezto configure file
+
+# use colors
+zstyle ':prezto:*:*' color 'yes'
+
+# load modules
+zstyle ':prezto:load' pmodule \
+  'utility' \
+  'archive' \
+  'completion' \
+  'directory' \
+  'editor' \
+  'git' \
+  'history' \
+  'osx' \
+  'tmux' \
+  'history-substring-search' \
+  'syntax-highlighting' \
+  'prompt'
+
+# Editor
+# set key mapping style to vi
+zstyle ':prezto:module:editor' key-bindings 'vi'
+
+# prompt
+zstyle ':prezto:module:prompt' theme 'pure'
+
+# tmux: auto-start
+zstyle ':prezto:module:tmux:auto-start' local 'yes'
+
+# utility
+zstyle ':prezto:module:utility:ls' color 'yes'
+
+# syntax-highlighting
+zstyle ':prezto:module:syntax-highlighting' color 'yes'
+
+zstyle ':prezto:module:syntax-highlighting' highlighters \
+  'main' \
+  'brackets' \
+  'pattern' \
+  'cursor' \
+  'root'
+
+# vim:ft=zsh
+

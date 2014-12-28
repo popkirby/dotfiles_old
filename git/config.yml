@@ -1,0 +1,7 @@
+# dotmgr config
+install:
+  link:
+    - src: .gitconfig
+      dst: ~/.gitconfig
+    - src: .gitignore.global
+      dst: ~/.gitignore.global 

@@ -1,0 +1,7 @@
+# dotmgr config
+install:
+  link:
+    - src: .vimrc
+      dst: ~/.vimrc
+    - src: .gvimrc
+      dst: ~/.gvimrc

@@ -1,0 +1,8 @@
+.vim/
+.zcompdump
+.zcompcache
+.zcompdump.zwc
+.zhistory
+.gtkrc-2.0
+tmp/*
+!.gitkeep
