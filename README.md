@@ -4,11 +4,11 @@ dotfiles
 Usage
 -----
 
-  rake install
+    rake install
 
 or update by:
 
-  rake update
+    rake update
 
 
 Author
