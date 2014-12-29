@@ -14,37 +14,18 @@ Dir.glob('*/config.yml').each do |name|
   config = YAML.load_file(name)
 
   namespace dname do
-    task :install do
-      links = config['install']['link'] if config['install'] != nil
-      links.each do |v|
-        Dir.chdir(dname) do
-          src = File.expand_path(v['src'])
-          dst = File.expand_path(v['dst'])
-          puts "    * linking #{src} -> #{dst}"
-          FileUtils.symlink(src, dst, {:force => true})
+    [:install, :update].each do |atask|
+      task atask do
+        (config[atask.to_s] || []).each do |method, value|
+          value.compact.each do |v|
+            Dir.chdir(dname) do
+              Kernel.send(method, v)
+            end
+          end
         end
-      end if links != nil
-
-      execs = config['install']['exec'] if config['install'] != nil
-      execs.each do |v|
-        Dir.chdir(dname) do
-          puts "    * executing `#{v}'"
-          system(v)
-        end
-      end if execs != nil
-    end
-
-    task :update do
-      execs = config['update']['exec'] if config['update'] != nil
-      execs.each do |v|
-        Dir.chdir(dname) do
-          puts "    * executing `#{v}'"
-          system(v)
-        end
-      end if execs != nil
+      end
     end
   end
-
 end
 
 task :default => [:help]
@@ -79,3 +60,14 @@ usage:
 EOS
 end
 
+def link(args)
+  src, dst = ["src", "dst"].map {|v| File.expand_path(args[v])}
+  puts "    * linking #{src} -> #{dst}"
+  FileUtils.symlink(src, dst, {:force => true})
+end
+
+def exec(args)
+  command = args
+  puts "    * executing `#{command}'"
+  system(command)
+end
