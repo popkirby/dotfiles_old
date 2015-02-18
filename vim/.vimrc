@@ -6,15 +6,7 @@
 
 " <Leader> mappings.
 let g:mapleader =','
-let g:maplocalleader = 'm'
-
-" change , -> \
-nnoremap \ ,
-
-nnoremap m <Nop>
-xnoremap m <Nop>
-nnoremap , <Nop>
-xnoremap , <Nop>
+let g:maplocalleader = '\'
 
 " Set augroup.
 augroup MyAutoCmd
@@ -201,6 +193,11 @@ NeoBundle 'chriskempson/vim-tomorrow-theme'
 NeoBundle 'ekalinin/Dockerfile.vim'
 
 NeoBundle 'fatih/vim-go'
+
+NeoBundleLazy 'Rip-Rip/clang_complete', {
+      \ 'autoload' : {
+      \   'filetypes' : ['c', 'cpp']
+      \ }}
 
 if s:plugin_develop == 1
   execute 'source' expand('~/vim-develop/dev-bundles.vim')
@@ -530,6 +527,11 @@ endif
 autocmd FileType go setlocal shiftwidth=8 tabstop=8 softtabstop=0 noexpandtab
 " }}}
 
+" Cpp {{{
+autocmd FileType cpp setlocal path+=/usr/local/Cellar/boost/1.57.0/include
+
+" }}}
+
 " }}}
 
 " Plugins "{{{
@@ -819,6 +821,13 @@ if neobundle#tap('syntastic')
 
   " use chktex for check tex files
   let g:syntastic_tex_checkers = ['chktex']
+
+  " use c++11
+  if executable("clang++")
+    let g:syntastic_cpp_compiler = 'clang++'
+    let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libc++'
+  endif
+
 endif
 
 " }}}
@@ -888,7 +897,7 @@ if neobundle#tap('lightline.vim')
         \               [ 'fileformat', 'fileencoding', 'filetype' ] ]
         \ }, 
         \ 'component' : {
-        \   'readonly' : '%{&filetype=="help"?"":&readonly?"\e0a1":""}',
+        \   'readonly' : '%{&filetype=="help"?"":&readonly?"\ue0a2":""}',
         \   'modified' : '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}'
         \ }, 
         \ 'component_function' : {
@@ -958,6 +967,31 @@ let g:EclimCompletionMethod = 'omnifunc'
 "  endif
 "endif
 
+" }}}
+
+" clang_complete "{{{
+if neobundle#tap('clang_complete')
+  if neobundle#is_installed('neocomplete.vim')
+    if !exists('g:neocomplete#force_omni_input_patterns')
+      let g:neocomplete#force_omni_input_patterns = {}
+    endif
+
+    let g:neocomplete#force_omni_input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\w*'
+    let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+    let g:clang_complete_auto = 0
+    let g:clang_auto_select = 0
+
+    let s:clang_library_path = '/Library/Developer/CommandLineTools/usr/lib'
+    if isdirectory(s:clang_library_path)
+      let g:clang_library_path = s:clang_library_path
+    endif
+
+  endif
+
+  let g:clang_user_options = '-std=c++11 -stdlib=libc++'
+
+  call neobundle#untap()
+endif
 " }}}
 
 if !has('vim_starting')

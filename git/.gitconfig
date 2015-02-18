@@ -1,10 +1,14 @@
 [include]
   path = ~/.gitconfig.local
 [user]
- 	name = popkirby
- 	email = popkirby@gmail.com
+	name = popkirby
+	email = popkirby@gmail.com
 [core]
 	excludesfile = ~/.gitignore.global
 	editor = vim
 [color]
 	ui = true
+[filter "media"]
+	clean = git media clean %f
+	smudge = git media smudge %f
+	required = true
