@@ -4,7 +4,7 @@ install:
     - src: .zshenv
       dst: ~/.zshenv
   exec:
-    - git clone --recursive https://github.com/sorin-ionescu/prezto .zprezto
+    - "[[ ! -d '.zprezto' ]] && git clone --recursive https://github.com/sorin-ionescu/prezto .zprezto"
 update:
   exec:
     - cd .zprezto && git pull && git submodule update --init --recursive
