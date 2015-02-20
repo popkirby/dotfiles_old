@@ -29,6 +29,7 @@ path=(
 
   # go
   /usr/local/opt/go/libexec/bin
+  ${HOME}/go/bin
 
   # MacVim
   /Applications/MacVim.app/Contents/MacOS

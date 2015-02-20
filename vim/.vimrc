@@ -576,9 +576,7 @@ if neobundle#tap('neocomplete.vim')
     " <CR>: close popup and save indent.
     inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
     function! s:my_cr_function()
-      return neocomplete#smart_close_popup() . "\<CR>"
-      " For no inserting <CR> key.
-      "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+      return pumvisible() ? neocomplete#close_popup()."\<CR>" : "\<CR>"
     endfunction
     " <TAB>: completion.
     inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -958,6 +956,19 @@ let g:EclimCompletionMethod = 'omnifunc'
 "  endif
 "endif
 
+" }}}
+
+" vim-go {{{
+if neobundle#tap('vim-go')
+  call neobundle#config({
+        \ 'autoload' : {
+        \   'filetypes' : ['go'], 
+        \ }})
+
+  let g:gocomplete#system_function = 'vimproc#system'
+  
+  call neobundle#untap()
+endif
 " }}}
 
 if !has('vim_starting')

@@ -20,6 +20,14 @@ fi
 
 # }}}
 
+# aliases {{{
+
+# love2d
+if [[ -e "/Applications/love.app" ]]; then
+  alias love="/Applications/love.app/Contents/MacOS/love"
+fi
+
+# }}}
 
 # function definitions {{{
 
