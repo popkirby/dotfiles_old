@@ -26,7 +26,7 @@ zstyle ':prezto:module:editor' key-bindings 'vi'
 zstyle ':prezto:module:prompt' theme 'pure'
 
 # tmux: auto-start
-zstyle ':prezto:module:tmux:auto-start' local 'yes'
+zstyle ':prezto:module:tmux:auto-start' local 'no'
 
 # utility
 zstyle ':prezto:module:utility:ls' color 'yes'

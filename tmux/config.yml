@@ -3,3 +3,5 @@ install:
   link:
     - src: .tmux.conf
       dst: ~/.tmux.conf
+    - src: tmuxinator
+      dst: ~/.tmuxinator

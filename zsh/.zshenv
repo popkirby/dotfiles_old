@@ -60,7 +60,7 @@ if which rbenv > /dev/null; then
 fi
 
 # go
-export GOPATH="${HOME}/go"
+export GOPATH="${HOME}/go:${HOME}/Dropbox/Programming/go"
 
 # misc
 export EDITOR="vim"
