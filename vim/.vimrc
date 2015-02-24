@@ -199,6 +199,13 @@ NeoBundleLazy 'Rip-Rip/clang_complete', {
       \   'filetypes' : ['c', 'cpp']
       \ }}
 
+NeoBundle 'editorconfig/editorconfig-vim'
+
+NeoBundleLazy 'digitaltoad/vim-jade', {
+      \ 'autoload' : {
+      \   'filetypes' : ['jade']
+      \ }}
+
 if s:plugin_develop == 1
   execute 'source' expand('~/vim-develop/dev-bundles.vim')
 endif
