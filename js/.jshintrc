@@ -9,7 +9,7 @@
   "latedef": true, 
   "newcap": true, 
   "undef": true, 
-  "unused": true
-  "trailing": true, 
+  "unused": true,
+  "trailing": true
 }
 
