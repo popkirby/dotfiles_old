@@ -69,7 +69,7 @@ NeoBundleLazy 'Shougo/vimfiler', {
 
 NeoBundleLazy 'jiangmiao/simple-javascript-indenter'
 
-NeoBundleLazy 'jelera/vim-javascript-syntax'
+NeoBundleLazy 'othree/yajs.vim'
 
 NeoBundleLazy 'Shougo/unite-outline', {
       \ 'autoload' : {
@@ -713,16 +713,13 @@ if neobundle#tap('simple-javascript-indenter')
 endif
 " }}}
 
-" vim-javascript-syntax "{{{
-if neobundle#tap('vim-javascript-syntax')
+" yajs.vim "{{{
+if neobundle#tap('yajs.vim')
   call neobundle#config({
       \ 'autoload' : {
       \   'filetypes' : 'javascript',
       \ }})
   
-  function! neobundle#tapped.hooks.on_source(bundle)
-    autocmd Filetype javascript call JavaScriptFold()
-  endfunction
   call neobundle#untap()
 endif
 " }}}
