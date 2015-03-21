@@ -4,10 +4,6 @@
 
 " Initialize "{{{
 
-" <Leader> mappings.
-let g:mapleader =','
-let g:maplocalleader = '\'
-
 " Set augroup.
 augroup MyAutoCmd
   autocmd!
@@ -71,8 +67,6 @@ NeoBundleLazy 'Shougo/vimfiler', {
       \ 'depends' : 'Shougo/unite.vim',  
       \ }
 
-NeoBundleLazy 'Shougo/junkfile.vim'
-
 NeoBundleLazy 'jiangmiao/simple-javascript-indenter'
 
 NeoBundleLazy 'jelera/vim-javascript-syntax'
@@ -95,10 +89,6 @@ NeoBundle 'LeafCage/foldCC'
 
 NeoBundleLazy 'thinca/vim-quickrun'
 
-NeoBundleLazy 'kana/vim-smartchr'
-
-NeoBundle 'altercation/vim-colors-solarized'
-
 NeoBundleLazy 'mattn/emmet-vim', {
       \ 'autoload' : {
       \   'filetypes' : ['html'], 
@@ -113,7 +103,6 @@ NeoBundleLazy 'itchyny/thumbnail.vim', {
       \ 'autoload' : {
       \   'commands' : 'Thumbnail'
       \ }}
-
 
 NeoBundleLazy 'othree/html5.vim', {
       \ 'autoload' : {
@@ -149,14 +138,6 @@ NeoBundle 'w0ng/vim-hybrid'
 
 NeoBundle 'cocopon/lightline-hybrid.vim'
 
-NeoBundle 'vim-scripts/twilight'
-
-NeoBundle 'jonathanfilip/vim-lucius'
-
-NeoBundle 'nanotech/jellybeans.vim'
-
-NeoBundle 'cocopon/iceberg.vim'
-
 NeoBundle 'osyo-manga/vim-anzu'
 
 NeoBundleLazy 'cocopon/colorswatch.vim', {
@@ -170,25 +151,10 @@ NeoBundle 'popkirby/lightline-iceberg', {
       \ 'depends' : 'lightline.vim'
       \ }
 
-NeoBundleLazy 'rhysd/wandbox-vim', {
-      \ 'autoload' : {
-      \   'commands' : 'Wandbox'
-      \ }}
-
 NeoBundleLazy 'leafgarland/typescript-vim', {
       \ 'autoload' : {
       \   'filetypes' : ['typescript']
       \ }}
-
-NeoBundleFetch 'ervandew/eclim', {
-      \ 'build': {
-      \   'mac' : 'ant -Declipse.home=' . escape(expand('/Applications/eclipse'), '')
-      \            . ' -Dvim.files=' . escape(expand('$HOME/.vim'), '')
-      \ }}
-
-NeoBundle 'chriskempson/base16-vim'
-
-NeoBundle 'chriskempson/vim-tomorrow-theme'
 
 NeoBundle 'ekalinin/Dockerfile.vim'
 
@@ -205,6 +171,8 @@ NeoBundleLazy 'digitaltoad/vim-jade', {
       \ 'autoload' : {
       \   'filetypes' : ['jade']
       \ }}
+
+NeoBundle 'junegunn/vim-easy-align'
 
 if s:plugin_develop == 1
   execute 'source' expand('~/vim-develop/dev-bundles.vim')
@@ -258,6 +226,11 @@ set wrapscan
 " }}}
 
 " Edit "{{{
+
+" swap ; <-> : in normal mode
+nnoremap : ;
+nnoremap ; :
+
 " smart tab for indenting.
 set smarttab
 
@@ -708,6 +681,8 @@ if neobundle#tap('vimfiler')
       \   'mappings' : '<Plug>(vimfiler_', 
       \   'explorer' : 1, 
       \ }})
+
+  let g:vimfiler_as_default_explorer = 1
   call neobundle#untap()
 endif
 "}}}
@@ -747,22 +722,6 @@ if neobundle#tap('vim-javascript-syntax')
   
   function! neobundle#tapped.hooks.on_source(bundle)
     autocmd Filetype javascript call JavaScriptFold()
-  endfunction
-  call neobundle#untap()
-endif
-" }}}
-
-" smartchr "{{{
-if neobundle#tap('vim-smartchr')
-  call neobundle#config({
-      \ 'autoload' : {
-      \   'insert' : 1,
-      \ }})
-
-  function! neobundle#tapped.hooks.on_source(bundle)
-    " smart =
-    inoremap <buffer> <expr> = smartchr#loop('=', ' = ', ' == ', ' === ')
-    inoremap <buffer> <expr> , smartchr#loop(', ', ',')
   endfunction
   call neobundle#untap()
 endif
@@ -962,17 +921,6 @@ endif
 
 "}}}
 
-" eclim "{{{
-let g:EclimCompletionMethod = 'omnifunc'
-
-"if neobundle#is_installed('eclim')
-"    if !exists('g:neocomplete#sources#omni#input_patterns')
-"      let g:neocomplete#sources#omni#input_patterns = {}
-"    let g:neocomplete#sources#omni#input_patterns.java = '\%(\h\w*\|)\)\.\w*'
-"  endif
-"endif
-
-" }}}
 
 " vim-go {{{
 if neobundle#tap('vim-go')
@@ -1013,12 +961,22 @@ if neobundle#tap('clang_complete')
 endif
 " }}}
 
+" vim-easy-align " {{{
+if neobundle#tap('vim-easy-align')
+  vmap <Enter> <Plug>(EasyAlign)
+  nmap ga <Plug>(EasyAlign)
+
+  call neobundle#untap()
+endif
+
+
 if !has('vim_starting')
   " call on_source hook when reloading .vimrc
   call neobundle#call_hook('on_source')
 endif
 
 "}}}
+" }}}
 
 if executable('zsh')
   set shell=zsh
