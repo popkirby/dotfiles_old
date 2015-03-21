@@ -17,7 +17,7 @@ set linespace=1
 
 if has('gui_macvim')
   " Transparency settings {{{
-  let g:my_transparency = 5
+  let g:my_transparency = 0
   execute "set transparency=" . g:my_transparency
   augroup MyGVimrc
     autocmd BufLeave,BufWinLeave execute "set transparency=" . g:my_transparency
