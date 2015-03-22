@@ -450,7 +450,7 @@ if v:version >= 703
   " For conceal.
   set conceallevel=2 concealcursor=iv
 
-  set colorcolumn=85
+  set colorcolumn=100
 endif
 
 " Tag Jumps
@@ -782,6 +782,9 @@ if neobundle#tap('syntastic')
 
   " use chktex for check tex files
   let g:syntastic_tex_checkers = ['chktex']
+
+  " use eslint for javascript
+  let g:syntastic_javascript_checkers = ['eslint']
 
   " use c++11
   if executable("clang++")
