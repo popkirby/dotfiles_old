@@ -174,6 +174,11 @@ NeoBundleLazy 'digitaltoad/vim-jade', {
 
 NeoBundle 'junegunn/vim-easy-align'
 
+NeoBundleLazy 'Quramy/tsuquyomi', {
+      \ 'autoload' : {
+      \   'filetype' : ['typescript']
+      \ }}
+
 if s:plugin_develop == 1
   execute 'source' expand('~/vim-develop/dev-bundles.vim')
 endif
