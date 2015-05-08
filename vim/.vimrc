@@ -69,7 +69,7 @@ NeoBundleLazy 'Shougo/vimfiler', {
 
 NeoBundleLazy 'jiangmiao/simple-javascript-indenter'
 
-NeoBundleLazy 'othree/yajs.vim'
+NeoBundle 'popkirby/yajs.vim', 'fix-multiple-filetypes'
 
 NeoBundleLazy 'Shougo/unite-outline', {
       \ 'autoload' : {
@@ -178,6 +178,12 @@ NeoBundleLazy 'Quramy/tsuquyomi', {
       \ 'autoload' : {
       \   'filetype' : ['typescript']
       \ }}
+
+NeoBundle 'mxw/vim-jsx'
+", {
+"      \ 'autoload' : {
+"      \   'filetype' : ['javascript', 'javascript.jsx']
+"      \ }}
 
 if s:plugin_develop == 1
   execute 'source' expand('~/vim-develop/dev-bundles.vim')
@@ -708,11 +714,15 @@ endif
 if neobundle#tap('simple-javascript-indenter')
   call neobundle#config({
       \ 'autoload' : {
-      \   'filetypes' : 'javascript',
+      \   'filetypes' : ['javascript', 'jsx', 'javascript.jsx'],
       \ }})
 
   function! neobundle#tapped.hooks.on_source(bundle)
     let g:SimpleJsIndenter_BriefMode = 1
+
+    function! GetJavascriptIndent()
+      return GetJsIndent()
+    endfunction
   endfunction
   call neobundle#untap()
 endif
@@ -720,10 +730,6 @@ endif
 
 " yajs.vim "{{{
 if neobundle#tap('yajs.vim')
-  call neobundle#config({
-      \ 'autoload' : {
-      \   'filetypes' : 'javascript',
-      \ }})
   
   call neobundle#untap()
 endif
@@ -926,7 +932,6 @@ endif
 
 "}}}
 
-
 " vim-go {{{
 if neobundle#tap('vim-go')
   call neobundle#config({
@@ -974,6 +979,16 @@ if neobundle#tap('vim-easy-align')
   call neobundle#untap()
 endif
 
+" }}}
+
+" vim-jsx "{{{
+let g:jsx_ext_required = 0
+if neobundle#tap('vim-jsx')
+
+  call neobundle#untap()
+endif
+
+" }}}
 
 if !has('vim_starting')
   " call on_source hook when reloading .vimrc
@@ -981,6 +996,7 @@ if !has('vim_starting')
 endif
 
 "}}}
+
 " }}}
 
 if executable('zsh')
