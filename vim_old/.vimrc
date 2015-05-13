@@ -145,8 +145,6 @@ NeoBundleLazy 'cocopon/colorswatch.vim', {
       \   'commands' : 'ColorSwatchGenerate'
       \ }}
 
-NeoBundle 'popkirby/vim-syntax-kag3'
-
 NeoBundle 'popkirby/lightline-iceberg', {
       \ 'depends' : 'lightline.vim'
       \ }
@@ -179,7 +177,7 @@ NeoBundleLazy 'Quramy/tsuquyomi', {
       \   'filetype' : ['typescript']
       \ }}
 
-NeoBundle 'mxw/vim-jsx'
+NeoBundle 'popkirby/vim-jsx'
 ", {
 "      \ 'autoload' : {
 "      \   'filetype' : ['javascript', 'javascript.jsx']
@@ -189,9 +187,9 @@ if s:plugin_develop == 1
   execute 'source' expand('~/vim-develop/dev-bundles.vim')
 endif
 
-filetype plugin indent on
-
 call neobundle#end()
+
+filetype plugin indent on
 
 " Check Bundles.
 NeoBundleCheck

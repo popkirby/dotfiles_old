@@ -1,0 +1,150 @@
+[[plugins]]
+repository = 'Shougo/tabpagebuffer.vim'
+filetypes = 'all'
+
+[[plugins]]
+repository = 'Shougo/neomru.vim'
+filetypes = 'all'
+
+[[plugins]]
+repository = 'Shougo/neocomplete.vim'
+depends = 'Shougo/context_filetype.vim'
+insert = 1
+
+[[plugins]]
+repository = 'Shougo/neosnippet.vim'
+depends = ['Shougo/neosnippet-snippets', 'Shougo/context_filetype.vim']
+insert = 1
+filetypes = 'snippet'
+unite_sources = ['neosnippet', 'neosnippet/user', 'neosnippet/runtime']
+
+[[plugins]]
+repository = 'Shougo/unite.vim'
+depends = 'Shougo/neomru.vim'
+
+  [plugins.commands]
+  name = 'Unite'
+  complete = 'customlist,unite#complete_source'
+
+[[plugins]]
+repository = 'Shougo/neossh.vim'
+filetypes = ['vimfiler']
+sources = 'ssh'
+
+[[plugins]]
+repository = 'Shougo/vimfiler.vim'
+depends = 'Shougo/unite.vim'
+mappings = '<Plug>'
+explorer = 1
+
+  [plugins.commands]
+  name = ['VimFiler']
+  complete = 'customlist,vimfiler#complete'
+
+[[plugins]]
+repository = 'Shougo/unite-build'
+
+[[plugins]]
+repository = 'Shougo/unite-outline'
+
+# JavaScript
+[[plugins]]
+repository = 'jiangmiao/simple-javascript-indenter'
+filetypes = ['javascript']
+
+[[plugins]]
+repository = 'othree/yajs.vim'
+filetypes = ['javascript']
+
+[[plugins]]
+repository = 'marijnh/tern_for_vim'
+filetypes = ['javascript']
+
+  [plugins.build]
+  mac = 'npm install'
+
+[[plugins]]
+repository = 'popkirby/vim-jsx'
+filetypes = ['jsx']
+
+# CSS
+[[plugins]]
+repository = 'hail2u/vim-css3-syntax'
+filetypes = ['css', 'scss']
+
+[[plugins]]
+repository = 'cakebaker/scss-syntax.vim'
+filetypes = ['scss', 'sass']
+
+# HTML
+[[plugins]]
+repository = 'mattn/emmet-vim'
+filetypes = ['html']
+
+[[plugins]]
+repository = 'othree/html5.vim'
+filetypes = ['html']
+
+# other filetypes
+[[plugins]]
+repository = 'kchmck/vim-coffee-script'
+filetypes = ['coffeescript']
+
+# misc
+[[plugins]]
+repository = 'scrooloose/syntastic'
+filetypes = 'all'
+
+[[plugins]]
+repository = 'tpope/vim-fugitive'
+filetypes = 'all'
+
+[[plugins]]
+repository = 'LeafCage/foldCC'
+filetypes = 'all'
+
+[[plugins]]
+repository = 'thinca/vim-quickrun'
+mappings = '<Plug>'
+
+[[plugins]]
+repository = 'itchyny/thumbnail.vim'
+commands = 'Thumbnail'
+
+[[plugins]]
+repository = 'rhysd/accelerated-jk'
+mappings = '<Plug>'
+
+[[plugins]]
+repository = 'ujihisa/neco-look'
+depends = 'Shougo/neocomplete.vim'
+on_source = 'neocomplete.vim'
+
+[[plugins]]
+repository = 'cocopon/lightline-hybrid.vim'
+lazy = 0
+
+[[plugins]]
+repository = 'itchyny/lightline.vim'
+lazy = 0
+
+[[plugins]]
+repository = 'ujihisa/unite-colorscheme'
+unite_sources = 'colorscheme'
+
+[[plugins]]
+repository = 'w0ng/vim-hybrid'
+lazy = 0
+
+[[plugins]]
+repository = 'osyo-manga/vim-anzu'
+lazy = 0
+
+[[plugins]]
+repository = 'editorconfig/editorconfig-vim'
+filetypes = 'all'
+
+[[plugins]]
+repository = 'junegunn/vim-easy-align'
+mappings = '<Plug>'
+
