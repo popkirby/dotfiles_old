@@ -5,3 +5,5 @@ install:
       dst: ~/.vimrc
     - src: gvimrc
       dst: ~/.gvimrc
+    - src: nvimrc
+      dst: ~/.nvimrc

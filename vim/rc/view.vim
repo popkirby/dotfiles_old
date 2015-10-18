@@ -10,6 +10,9 @@ autocmd MyAutoCmd BufWinEnter * if &previewwindow == 1
       \ |   setlocal wrap
       \ | endif
 
+" auto close prewview window
+autocmd MyAutoCmd CompleteDone * pclose
+
 " hightlight cursorline
 set cursorline
 

@@ -94,7 +94,11 @@ if v:version >= 703
   let &undodir=&directory
 endif
 
-set viminfo=\"50,'100,<1000,h,s100,n~/.viminfo
+if has('nvim')
+  set viminfo=\"50,'100,<1000,h,s100,n~/.nviminfo
+else
+  set viminfo=\"50,'100,<1000,h,s100,n~/.viminfo
+endif
 
 " Reload .vimrc and .gvimrc automatically.
 if !has('gui_running')

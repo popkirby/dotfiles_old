@@ -5,9 +5,55 @@
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
 " Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
 
-if neobundle#tap('neocomplete.vim')
+if neobundle#tap('deoplete.nvim') && has('nvim')
+  let g:deoplete#enable_at_startup = 1
+
+  call neobundle#config({
+        \ 'autoload' : {
+        \   'insert' : 1, 
+        \   'commands' : 'NeoCompleteBufferMakeCache', 
+        \ }})
+
+  imap <silent><expr> <TAB>
+        \ pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "\<TAB>" :
+        \ deoplete#mappings#manual_complete()
+
+  function! s:check_back_space()
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1] =~ '\s'
+  endfunction
+
+  " use smartcase
+  let g:deoplete#enable_smart_case = 1
+
+  " smart popups
+  inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
+  inoremap <expr><BS>  deoplete#mappings#smart_close_popup()."\<C-h>"
+
+  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+  " Enable omni completion.
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+
+  if neobundle#is_installed('tern_for_vim')
+    autocmd FileType javascript setlocal omnifunc=tern#Complete
+  else
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#Complete
+  endif
+
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+  call neobundle#untap()
+endif
+
+
+if neobundle#tap('neocomplete.vim') && has('lua')
+  let g:neocomplete#enable_at_startup = 1
+
   call neobundle#config({
         \ 'autoload' : {
         \   'insert' : 1, 
@@ -33,7 +79,7 @@ if neobundle#tap('neocomplete.vim')
     if !exists('g:neocomplete#keyword_patterns')
       let g:neocomplete#keyword_patterns = {}
     endif
-    let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+    "let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
     " Plugin key-mappings.
     inoremap <expr><C-g>     neocomplete#undo_completion()

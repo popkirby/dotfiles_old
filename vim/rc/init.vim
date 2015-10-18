@@ -17,7 +17,11 @@ if filereadable(expand('~/.secret_vimrc'))
 endif
 
 " neobundle initialization
-let s:neobundle_dir = expand('~/.vim/bundle')
+if has('nvim')
+  let s:neobundle_dir = expand('~/.nvim/bundle')
+else 
+  let s:neobundle_dir = expand('~/.vim/bundle')
+endif
 
 if has('vim_starting')
   " load neobundle.
