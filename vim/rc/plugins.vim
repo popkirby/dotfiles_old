@@ -2,9 +2,6 @@
 " ----------------------------------------------------------------------
 
 " neocomplete.vim "{{{
-"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-" Disable AutoComplPop.
-" Use neocomplete.
 
 if neobundle#tap('deoplete.nvim') && has('nvim')
   let g:deoplete#enable_at_startup = 1
@@ -107,8 +104,6 @@ if neobundle#tap('neocomplete.vim') && has('lua')
 
     if neobundle#is_installed('tern_for_vim')
       autocmd FileType javascript setlocal omnifunc=tern#Complete
-    else
-      autocmd FileType javascript setlocal omnifunc=javascriptcomplete#Complete
     endif
 
     autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
@@ -186,6 +181,8 @@ if neobundle#tap('unite.vim')
         \ -buffer-name=outline outline
   nnoremap [unite]b :<C-u>Unite
         \ -buffer-name=buffer_tab buffer_tab<CR>
+  nnoremap [unite]f :<C-u>Unite -start-insert
+        \ -buffer-name=file_rec file_rec<CR>
 
   nnoremap [unite]h :<C-u>Unite -start-insert help<CR>
 

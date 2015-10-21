@@ -60,15 +60,15 @@ repository = 'othree/yajs.vim'
 filetypes = ['javascript']
 
 [[plugins]]
+repository = 'popkirby/vim-jsx'
+filetypes = ['javascript', 'jsx']
+
+[[plugins]]
 repository = 'marijnh/tern_for_vim'
 filetypes = ['javascript']
 
   [plugins.build]
   mac = 'npm install'
-
-[[plugins]]
-repository = 'popkirby/vim-jsx'
-filetypes = ['javascript', 'jsx']
 
 # CSS
 [[plugins]]
@@ -92,6 +92,10 @@ filetypes = ['html']
 [[plugins]]
 repository = 'kchmck/vim-coffee-script'
 filetypes = ['coffeescript']
+
+[[plugins]]
+repository = 'tpope/vim-fireplace'
+filetypes = ['clojure']
 
 # misc
 [[plugins]]

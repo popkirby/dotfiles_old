@@ -83,6 +83,10 @@ call s:source_rc('commands.vim')
 " Others
 " ----------------------------------------------------------------------
 
+if has('nvim')
+  call s:source_rc('nvim.vim')
+endif
+
 if executable('zsh')
   set shell=zsh
 endif
