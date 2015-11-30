@@ -18,7 +18,7 @@ endif
 
 " neobundle initialization
 if has('nvim')
-  let s:neobundle_dir = expand('~/.nvim/bundle')
+  let s:neobundle_dir = expand('~/.config/nvim/bundle')
 else 
   let s:neobundle_dir = expand('~/.vim/bundle')
 endif

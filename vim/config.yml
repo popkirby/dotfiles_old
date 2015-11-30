@@ -6,4 +6,4 @@ install:
     - src: gvimrc
       dst: ~/.gvimrc
     - src: nvimrc
-      dst: ~/.nvimrc
+      dst: ~/.config/nvim/init.vim
