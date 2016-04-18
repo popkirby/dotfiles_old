@@ -90,7 +90,7 @@ endif
 " Syntax
 set autoindent smartindent
 
-set background=dark
+set background=light
 if !has('gui_running')
   let s:os_type = system('uname')
   set t_Co=256
@@ -98,7 +98,7 @@ if !has('gui_running')
   let g:hybrid_use_Xresources=1
 endif
 
-colorscheme hybrid
+colorscheme solarized
 syntax enable
 
 let macvim_skip_colorscheme=1

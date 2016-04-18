@@ -15,8 +15,9 @@ export ZDOTDIR="${DOTFILES}/zsh"
 path=(
   # homebrew
   /usr/local/bin
-  /usr/local/bin
   ${HOME}/homebrew/bin
+
+  ${DOTFILES}/bin
 
   # tex
   /usr/texbin
