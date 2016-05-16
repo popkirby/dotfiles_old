@@ -9,20 +9,22 @@ export DOTFILES="${HOME}/dotfiles"
 # set .z* files path to $DOTFILES
 export ZDOTDIR="${DOTFILES}/zsh"
 
+setopt no_global_rcs
+
 # }}}
 
 # paths {{{
 path=(
-  # homebrew
-  /usr/local/bin
+  # rbenv
+  ${HOME}/.rbenv/bin
+
+ # homebrew
   /usr/local/bin
   ${HOME}/homebrew/bin
 
   # tex
   /usr/texbin
-
-  # rbenv
-  ${HOME}/.rbenv/bin
+  /Library/TeX/texbin
 
   # nodebrew
   ${HOME}/.nodebrew/current/bin
