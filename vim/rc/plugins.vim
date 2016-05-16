@@ -380,7 +380,7 @@ endif
 " lightline.vim "{{{
 if neobundle#tap('lightline.vim')
   let g:lightline = {
-        \ 'colorscheme' : 'hybrid', 
+        \ 'colorscheme' : 'solarized', 
         \ 'active' : {
         \   'left' : [ [ 'mode', 'paste' ], 
         \              [ 'readonly', 'fugitive', 'filename', 'modified', 'anzu']], 

@@ -16,3 +16,5 @@
   root = ~/src
 [url "git@github.com:popkirby"]
   pushInstedOf = https://github.com/popkirby
+[credential]
+	helper = osxkeychain

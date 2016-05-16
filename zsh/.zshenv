@@ -15,12 +15,11 @@ setopt no_global_rcs
 
 # paths {{{
 path=(
-  # rbenv
-  ${HOME}/.rbenv/bin
-
- # homebrew
+  # homebrew
   /usr/local/bin
   ${HOME}/homebrew/bin
+
+  ${DOTFILES}/bin
 
   # tex
   /usr/texbin

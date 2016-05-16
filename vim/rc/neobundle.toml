@@ -144,6 +144,10 @@ repository = 'w0ng/vim-hybrid'
 lazy = 0
 
 [[plugins]]
+repository = 'altercation/vim-colors-solarized'
+lazy = 0
+
+[[plugins]]
 repository = 'osyo-manga/vim-anzu'
 lazy = 0
 
