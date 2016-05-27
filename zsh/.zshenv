@@ -22,9 +22,6 @@ path=(
   # tex
   /usr/texbin
 
-  # rbenv
-  ${HOME}/.rbenv/bin
-
   # nodebrew
   ${HOME}/.nodebrew/current/bin
 
