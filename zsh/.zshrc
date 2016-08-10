@@ -27,6 +27,9 @@ if [[ -e "/Applications/love.app" ]]; then
   alias love="/Applications/love.app/Contents/MacOS/love"
 fi
 
+# misc
+alias clovers='cd `chiery list | fzf | xargs chiery get`'
+
 # }}}
 
 # function definitions {{{
